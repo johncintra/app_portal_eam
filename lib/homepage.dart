@@ -37,6 +37,7 @@ class _HomePageState extends State<HomePage> {
       ..loadRequest(Uri.parse('https://aluno.portaleam.com.br/'));
   }
 
+  final String url = 'https://aluno.portaleam.com.br/users/edit';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -44,7 +45,8 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: const Text(
             'Portal EAM',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
+            style: TextStyle(
+                fontWeight: FontWeight.bold, fontSize: 26, color: Colors.white),
           ),
           centerTitle: true,
           backgroundColor: const Color(0xFF6C5284),
@@ -55,11 +57,16 @@ class _HomePageState extends State<HomePage> {
         extendBody: true,
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
+          shape: const CircleBorder(),
+          backgroundColor: const Color(0xFF6C5284),
           onPressed: () {
             Navigator.of(context).push(
                 MaterialPageRoute(builder: (context) => const HomePage()));
           },
-          child: const Icon(Icons.home),
+          child: const Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
         ),
         bottomNavigationBar: BottomAppBar(
           shape: const CircularNotchedRectangle(),
@@ -73,22 +80,22 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.face),
+                    icon: const Icon(Icons.settings),
                     onPressed: () {},
                   ),
                   IconButton(
-                    icon: const Icon(Icons.list),
+                    icon: const Icon(Icons.contact_support_outlined),
                     onPressed: () {},
                   ),
                   const SizedBox(
                     width: 24,
                   ),
                   IconButton(
-                    icon: const Icon(Icons.person),
+                    icon: const Icon(Icons.shopping_bag_outlined),
                     onPressed: () {},
                   ),
                   IconButton(
-                    icon: const Icon(Icons.calculate),
+                    icon: const Icon(Icons.calculate_outlined),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const MaterialCalculator()));

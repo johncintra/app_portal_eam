@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:portal_eam/calculator/calculator.dart';
+import 'package:portal_eam/homepage.dart';
 
 class PriceCalculator extends StatefulWidget {
   final double totalCost;
@@ -32,57 +34,112 @@ class _PriceCalculatorState extends State<PriceCalculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple[300],
+        backgroundColor: const Color(0xFF6C5284),
         title: const Text('Calcular Preço Final'),
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(colors: [
-            Color.fromARGB(255, 243, 213, 248),
-            Color.fromARGB(255, 123, 48, 136)
-          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            Text(
+              'Custo Total do Material: R\$${widget.totalCost.toStringAsFixed(2)}',
+              style: const TextStyle(fontSize: 22),
+            ),
+            const SizedBox(height: 20),
+            TextField(
+              controller: _shippingCostController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Custo do Frete',
+              ),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            TextField(
+              controller: _packagingCostController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Custo da Embalagem',
+              ),
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            TextField(
+              controller: _profitPercentageController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Porcentagem de Lucro (%)',
+              ),
+            ),
+            const SizedBox(height: 100),
+            ElevatedButton(
+              onPressed: _calculateFinalPrice,
+              child: const Text(
+                'Calcular Preço Final',
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              'Preço Final: R\$$_finalPrice',
+              style: const TextStyle(
+                fontSize: 30,
+              ),
+            ),
+          ],
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: <Widget>[
-              Text(
-                'Custo Total do Material: R\$${widget.totalCost.toStringAsFixed(2)}',
-                style: const TextStyle(fontSize: 20),
-              ),
-              const SizedBox(height: 20),
-              TextField(
-                controller: _shippingCostController,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  labelText: 'Custo do Frete',
+      ),
+      extendBody: true,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        shape: const CircleBorder(),
+        backgroundColor: const Color(0xFF6C5284),
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => const HomePage()));
+        },
+        child: const Icon(
+          Icons.home,
+          color: Colors.white,
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        color: const Color(0xFF6C5284),
+        child: IconTheme(
+          //Theme.of(context).colorScheme.onPrimary
+          data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.settings),
+                  onPressed: () {},
                 ),
-              ),
-              TextField(
-                controller: _packagingCostController,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  labelText: 'Custo da Embalagem',
+                IconButton(
+                  icon: const Icon(Icons.contact_support_outlined),
+                  onPressed: () {},
                 ),
-              ),
-              TextField(
-                controller: _profitPercentageController,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  labelText: 'Porcentagem de Lucro (%)',
+                const SizedBox(
+                  width: 24,
                 ),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _calculateFinalPrice,
-                child: const Text('Calcular Preço Final'),
-              ),
-              const SizedBox(height: 20),
-              Text(
-                'Preço Final: R\$$_finalPrice',
-                style: const TextStyle(fontSize: 20),
-              ),
-            ],
+                IconButton(
+                  icon: const Icon(Icons.shopping_bag_outlined),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: const Icon(Icons.calculate_outlined),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const MaterialCalculator()));
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),

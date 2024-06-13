@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portal_eam/calculator/price_calculator.dart';
+import 'package:portal_eam/homepage.dart';
 
 class MaterialCalculator extends StatefulWidget {
   const MaterialCalculator({super.key});
@@ -32,40 +33,93 @@ class _MaterialCalculatorState extends State<MaterialCalculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.purple[300],
-        title: const Text('Calcular Custo do Material'),
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(colors: [
-            Color.fromARGB(255, 243, 213, 248),
-            Color.fromARGB(255, 123, 48, 136)
-          ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+        backgroundColor: const Color(0xFF6C5284),
+        title: const Text(
+          'Calcular Custo do Material',
+          style: TextStyle(color: Colors.white),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: <Widget>[
-              TextField(
-                controller: _unitPriceController,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  labelText: 'Preço Unitário do Material',
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: <Widget>[
+            TextField(
+              controller: _unitPriceController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Preço Unitário do Material',
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            TextField(
+              controller: _quantityController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Quantidade de Material',
+              ),
+            ),
+            const SizedBox(height: 100),
+            ElevatedButton(
+              onPressed: _calculateTotalCost,
+              child: const Text(
+                'Calcular Custo Total',
+                style: TextStyle(fontSize: 20),
+              ),
+            ),
+          ],
+        ),
+      ),
+      extendBody: true,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        shape: const CircleBorder(),
+        backgroundColor: const Color(0xFF6C5284),
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => const HomePage()));
+        },
+        child: const Icon(
+          Icons.home,
+          color: Colors.white,
+        ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+        shape: const CircularNotchedRectangle(),
+        color: const Color(0xFF6C5284),
+        child: IconTheme(
+          //Theme.of(context).colorScheme.onPrimary
+          data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                  icon: const Icon(Icons.settings),
+                  onPressed: () {},
                 ),
-              ),
-              TextField(
-                controller: _quantityController,
-                keyboardType: TextInputType.number,
-                decoration: const InputDecoration(
-                  labelText: 'Quantidade de Material',
+                IconButton(
+                  icon: const Icon(Icons.contact_support_outlined),
+                  onPressed: () {},
                 ),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _calculateTotalCost,
-                child: const Text('Calcular Custo Total'),
-              ),
-            ],
+                const SizedBox(
+                  width: 24,
+                ),
+                IconButton(
+                  icon: const Icon(Icons.shopping_bag_outlined),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: const Icon(Icons.calculate_outlined),
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const MaterialCalculator()));
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
