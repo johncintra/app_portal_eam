@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:portal_eam/calculator/calculator.dart';
+import 'package:portal_eam/homepage.dart';
 import 'package:portal_eam/store.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class CaptureScreen extends StatefulWidget {
+  const CaptureScreen({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<CaptureScreen> createState() => _CaptureScreenState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _CaptureScreenState extends State<CaptureScreen> {
   late WebViewController controller;
 
   @override
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..setBackgroundColor(const Color(0xFF6C5284))
+      ..setBackgroundColor(Colors.white)
       ..setNavigationDelegate(
         NavigationDelegate(
           onProgress: (int progress) {
@@ -35,7 +36,7 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://aluno.portaleam.com.br/'));
+      ..loadRequest(Uri.parse('https://annegalante.activehosted.com/f/32/'));
   }
 
   @override

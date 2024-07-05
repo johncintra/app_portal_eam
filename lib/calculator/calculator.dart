@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portal_eam/calculator/price_calculator.dart';
 import 'package:portal_eam/homepage.dart';
+import 'package:portal_eam/store.dart';
 
 class MaterialCalculator extends StatefulWidget {
   const MaterialCalculator({super.key});
@@ -36,7 +37,7 @@ class _MaterialCalculatorState extends State<MaterialCalculator> {
         backgroundColor: const Color(0xFF6C5284),
         title: const Text(
           'Calcular Custo do Material',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white, fontFamily: 'Factor'),
         ),
       ),
       body: Padding(
@@ -60,7 +61,7 @@ class _MaterialCalculatorState extends State<MaterialCalculator> {
                 labelText: 'Quantidade de Material',
               ),
             ),
-            const SizedBox(height: 100),
+            const SizedBox(height: 70),
             ElevatedButton(
               onPressed: _calculateTotalCost,
               child: const Text(
@@ -109,7 +110,10 @@ class _MaterialCalculatorState extends State<MaterialCalculator> {
                 ),
                 IconButton(
                   icon: const Icon(Icons.shopping_bag_outlined),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const Store()));
+                  },
                 ),
                 IconButton(
                   icon: const Icon(Icons.calculate_outlined),

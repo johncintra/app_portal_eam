@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portal_eam/calculator/calculator.dart';
 import 'package:portal_eam/homepage.dart';
+import 'package:portal_eam/store.dart';
 
 class PriceCalculator extends StatefulWidget {
   final double totalCost;
@@ -35,7 +36,10 @@ class _PriceCalculatorState extends State<PriceCalculator> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF6C5284),
-        title: const Text('Calcular Preço Final'),
+        title: const Text(
+          'Calcular Preço Final',
+          style: TextStyle(color: Colors.white, fontFamily: 'Factor'),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -73,7 +77,7 @@ class _PriceCalculatorState extends State<PriceCalculator> {
                 labelText: 'Porcentagem de Lucro (%)',
               ),
             ),
-            const SizedBox(height: 100),
+            const SizedBox(height: 70),
             ElevatedButton(
               onPressed: _calculateFinalPrice,
               child: const Text(
@@ -129,7 +133,10 @@ class _PriceCalculatorState extends State<PriceCalculator> {
                 ),
                 IconButton(
                   icon: const Icon(Icons.shopping_bag_outlined),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const Store()));
+                  },
                 ),
                 IconButton(
                   icon: const Icon(Icons.calculate_outlined),

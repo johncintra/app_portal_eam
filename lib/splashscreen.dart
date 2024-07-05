@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:portal_eam/homepage.dart';
+import 'package:portal_eam/filter_page.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     Future.delayed(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (_) => const HomePage(),
+        builder: (_) => const FilterPage(),
       ));
     });
   }
@@ -38,9 +38,9 @@ class _SplashScreenState extends State<SplashScreen>
           width: double.infinity,
           decoration: const BoxDecoration(
             gradient: LinearGradient(colors: [
-              Color.fromARGB(255, 235, 231, 238),
+              Color.fromARGB(255, 168, 103, 218),
               Color.fromARGB(255, 108, 82, 132),
-            ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+            ], begin: Alignment.bottomLeft, end: Alignment.topRight),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

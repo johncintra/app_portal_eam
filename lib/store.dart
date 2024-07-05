@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:portal_eam/calculator/calculator.dart';
-import 'package:portal_eam/store.dart';
+import 'package:portal_eam/homepage.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class Store extends StatefulWidget {
+  const Store({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<Store> createState() => _StoreState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _StoreState extends State<Store> {
   late WebViewController controller;
 
   @override
@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       )
-      ..loadRequest(Uri.parse('https://aluno.portaleam.com.br/'));
+      ..loadRequest(Uri.parse('https://loja.escoladeartesmanuais.com.br/'));
   }
 
   @override
@@ -44,19 +44,12 @@ class _HomePageState extends State<HomePage> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-            'Portal EAM',
+            'Loja EAM',
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 26,
                 color: Colors.white,
                 fontFamily: 'Factor'),
-          ),
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            color: Colors.white,
-            onPressed: () {
-              Navigator.pop(context);
-            },
           ),
           centerTitle: true,
           backgroundColor: const Color(0xFF6C5284),
@@ -101,12 +94,11 @@ class _HomePageState extends State<HomePage> {
                     width: 24,
                   ),
                   IconButton(
-                    icon: const Icon(Icons.shopping_bag_outlined),
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const Store()));
-                    },
-                  ),
+                      icon: const Icon(Icons.shopping_bag_outlined),
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const Store()));
+                      }),
                   IconButton(
                     icon: const Icon(Icons.calculate_outlined),
                     onPressed: () {
