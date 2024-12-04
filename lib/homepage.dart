@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:portal_eam/ads.dart';
 import 'package:portal_eam/calculator/calculator.dart';
+import 'package:portal_eam/list_working.dart';
 import 'package:portal_eam/store.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -90,13 +92,17 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.settings),
-                    onPressed: () {},
-                  ),
+                    icon: const Icon(Icons.library_add_check),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const AnnouncementsScreen()));
+                    }),
                   IconButton(
-                    icon: const Icon(Icons.contact_support_outlined),
-                    onPressed: () {},
-                  ),
+                    icon: const Icon(Icons.playlist_add_rounded),
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => CrochetControlScreen()));
+                    }),
                   const SizedBox(
                     width: 24,
                   ),

@@ -3,11 +3,15 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
+        
+
     <application
         android:label="portal_eam"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
+            android:enableOnBackInvokedCallback="true"
+
             android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
