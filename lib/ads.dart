@@ -113,7 +113,7 @@ class _AnnouncementsScreenState extends State<AnnouncementsScreen> {
                 );
               },
             ),
-            floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+            /*floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           shape: const CircleBorder(),
           backgroundColor: const Color(0xFF6C5284),
@@ -170,7 +170,7 @@ class _AnnouncementsScreenState extends State<AnnouncementsScreen> {
               ),
             ),
           ),
-        ),
+        ),*/
     );
   }
 }

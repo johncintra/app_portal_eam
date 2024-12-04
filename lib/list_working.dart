@@ -124,7 +124,7 @@ class _CrochetControlScreenState extends State<CrochetControlScreen> {
         ),
       ],
     ),
-    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    /*floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     // Botão principal para navegação (na barra inferior)
     floatingActionButton: FloatingActionButton(
       shape: const CircleBorder(),
@@ -194,7 +194,7 @@ class _CrochetControlScreenState extends State<CrochetControlScreen> {
           ),
         ),
       ),
-    ),
+    ),*/
   );
 }
 

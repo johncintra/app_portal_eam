@@ -193,7 +193,7 @@ class _StoreState extends State<Store> {
         ),
         body: WebViewWidget(controller: controller),
         extendBody: true,
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        /*floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         floatingActionButton: FloatingActionButton(
           shape: const CircleBorder(),
           backgroundColor: const Color(0xFF6C5284),
@@ -249,7 +249,7 @@ class _StoreState extends State<Store> {
               ),
             ),
           ),
-        ),
+        ),*/
       ),
     );
   }
