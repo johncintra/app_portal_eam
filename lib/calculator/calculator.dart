@@ -198,7 +198,12 @@ class _MaterialCalculatorState extends State<MaterialCalculator> {
       appBar: AppBar(
         title: const Text(
           'Cálculo de Materiais',
-          style: TextStyle(fontFamily: 'Factor', color: Colors.white),
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+              color: Colors.white,
+              fontFamily: 'Factor',
+            ),
         ),
         backgroundColor: const Color.fromARGB(255, 108, 82, 132),
         iconTheme: IconThemeData(color: Colors.white),
@@ -296,7 +301,7 @@ class _MaterialCalculatorState extends State<MaterialCalculator> {
                 ),
                 const SizedBox(width: 24),
                 IconButton(
-                  icon: const Icon(Icons.shopping_bag_outlined),
+                  icon: const Icon(Icons.featured_play_list_outlined),
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const Store()));

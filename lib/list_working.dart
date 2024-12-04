@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:portal_eam/ads.dart';
+import 'package:portal_eam/calculator/calculator.dart';
+import 'package:portal_eam/homepage.dart';
+import 'package:portal_eam/store.dart';
 
 class CrochetControlScreen extends StatefulWidget {
   @override
@@ -43,7 +47,7 @@ class _CrochetControlScreenState extends State<CrochetControlScreen> {
       pieces.removeWhere((piece) => piece['id'] == id);
     });
   }
-
+/*
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,6 +80,124 @@ class _CrochetControlScreenState extends State<CrochetControlScreen> {
       
     );
   }
+  */
+  Widget build(BuildContext context) {
+  return Scaffold(
+    appBar: AppBar(
+      title: Text(
+        "Na Agulha",
+        style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+              color: Colors.white,
+              fontFamily: 'Factor',
+            ),
+      ),
+      backgroundColor: Color(0xFF6C5284),
+      iconTheme: IconThemeData(color: Colors.white),
+    ),
+    body: Stack(
+      children: [
+        ListView.builder(
+          itemCount: pieces.length,
+          itemBuilder: (context, index) {
+            final piece = pieces[index];
+            return PieceCard(
+              piece: piece,
+              onUpdate: (updatedPiece) {
+                _updatePiece(piece['id'], updatedPiece);
+              },
+              onDelete: () => _confirmDelete(piece['id']),
+              onEdit: () => _showPieceForm(context, piece),
+            );
+          },
+        ),
+        // Botão flutuante adicional acima da BottomAppBar
+        Positioned(
+          bottom: 80, // Distância da parte inferior da tela
+          right: 16, // Alinhamento à direita
+          child: FloatingActionButton(
+            onPressed: () => _showPieceForm(context),
+            child: Icon(Icons.add, color: Colors.white),
+            backgroundColor: Color(0xFF6C5284),
+          ),
+        ),
+      ],
+    ),
+    floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+    // Botão principal para navegação (na barra inferior)
+    floatingActionButton: FloatingActionButton(
+      shape: const CircleBorder(),
+      backgroundColor: const Color(0xFF6C5284),
+      onPressed: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const HomePage()),
+        );
+      },
+      child: const Icon(
+        Icons.home,
+        color: Colors.white,
+      ),
+    ),
+    bottomNavigationBar: BottomAppBar(
+      shape: const CircularNotchedRectangle(),
+      color: const Color(0xFF6C5284),
+      child: IconTheme(
+        data: IconThemeData(color: Theme.of(context).colorScheme.onPrimary),
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.library_add_check),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const AnnouncementsScreen(),
+                    ),
+                  );
+                },
+              ),
+              IconButton(
+                icon: const Icon(Icons.playlist_add_rounded),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => CrochetControlScreen(),
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(width: 24), // Espaço central para o FAB
+              IconButton(
+                icon: const Icon(Icons.featured_play_list_outlined),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const Store(),
+                    ),
+                  );
+                },
+              ),
+              IconButton(
+                icon: const Icon(Icons.calculate_outlined),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const MaterialCalculator(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
 
   void _confirmDelete(String id) {
     showDialog(

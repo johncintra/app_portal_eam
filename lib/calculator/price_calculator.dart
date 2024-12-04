@@ -150,7 +150,12 @@ class _PriceCalculatorState extends State<PriceCalculator> {
       appBar: AppBar(
         title: const Text(
           'Cálculo Preço Final',
-          style: TextStyle(color: Colors.white, fontFamily: 'Factor'),
+          style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+              color: Colors.white,
+              fontFamily: 'Factor',
+            ),
         ),
         backgroundColor: const Color.fromARGB(255, 108, 82, 132),
         iconTheme: IconThemeData(color: Colors.white),

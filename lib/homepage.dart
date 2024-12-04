@@ -107,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                     width: 24,
                   ),
                   IconButton(
-                    icon: const Icon(Icons.shopping_bag_outlined),
+                    icon: const Icon(Icons.featured_play_list_outlined),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => const Store()));
