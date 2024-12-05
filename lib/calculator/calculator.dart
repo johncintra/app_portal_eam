@@ -172,10 +172,6 @@ class _MaterialCalculatorState extends State<MaterialCalculator> {
 */
 
 import 'package:flutter/material.dart';
-import 'package:portal_eam/ads.dart';
-import 'package:portal_eam/homepage.dart';
-import 'package:portal_eam/list_working.dart';
-import 'package:portal_eam/store.dart';
 import 'price_calculator.dart';
 
 class MaterialCalculator extends StatefulWidget {
