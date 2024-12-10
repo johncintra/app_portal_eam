@@ -6,9 +6,11 @@
         
 
     <application
-        android:label="portal_eam"
+        android:label="Portal EAM"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        
         <activity
             android:enableOnBackInvokedCallback="true"
 

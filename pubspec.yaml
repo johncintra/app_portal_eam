@@ -33,6 +33,10 @@ dependencies:
   firebase_core: ^3.6.0
   cloud_firestore: ^5.4.4
   firebase_database: ^11.1.4
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  shared_preferences: ^2.3.3
+  
    
   
   
@@ -45,17 +49,22 @@ dependencies:
   url_launcher: ^6.0.17
   
   
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   
   flutter_launcher_icons: ^0.14.1
-flutter_launcher_icons:
+
+flutter_icons:
   android: true
   ios: true
-  image_path: "assets/icons/icon_ios.png"
+  image_path: "assets/icon/icon_ios.png"
+  adaptive_icon_background: "#FF6C5284" # Cor de fundo (ou caminho para outro PNG)
+  adaptive_icon_foreground: "assets/icon/icon_ios.png"
   min_sdk_android: 21
+  
   
 
   # The "flutter_lints" package below contains a set of recommended lints to
