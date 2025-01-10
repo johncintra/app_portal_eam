@@ -1,4 +1,4 @@
-package com.example.portal_eam
+package com.xcore.portal_eam
 
 import io.flutter.embedding.android.FlutterActivity
 

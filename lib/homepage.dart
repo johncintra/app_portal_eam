@@ -82,7 +82,9 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: const Color(0xFF6C5284),
         onPressed: () {
           setState(() {
-            _currentIndex = 0; // Voltar para a HomePage (índice 0)
+            //_currentIndex = 0; // Voltar para a HomePage (índice 0)
+            Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => const HomePage()));
           });
         },
         child: const Icon(
@@ -105,6 +107,8 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     setState(() {
                       _currentIndex = 1; // Ir para anúncios
+                      //Navigator.of(context).push(MaterialPageRoute(
+                        //builder: (context) => const AnnouncementsScreen()));
                     });
                   },
                 ),
@@ -113,6 +117,8 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     setState(() {
                       _currentIndex = 2; // Ir para controle de crochê
+                      //Navigator.of(context).push(MaterialPageRoute(
+                        //builder: (context) => CrochetControlScreen()));
                     });
                   },
                 ),

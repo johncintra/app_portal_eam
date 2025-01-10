@@ -44,7 +44,7 @@ class FilterPage extends StatelessWidget {
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: _buildButton(
                   context: context,
-                  text: 'Quero me tornar Aluna',
+                  text: 'Não sou Aluna',
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
